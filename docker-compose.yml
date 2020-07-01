@@ -16,7 +16,8 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
-  # curl -H Host:whoami.localhost http://127.0.0.1:80
+  # access with
+  # curl -v -H Host:whoami.localhost http://127.0.0.1:80
   whoami:
     image: "containous/whoami"
     container_name: "simple-service"
@@ -24,3 +25,13 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
       - "traefik.http.routers.whoami.entrypoints=web"
+
+  # access with
+  # curl -v whoami-192.168.57.101.nip.io
+  whoami2:
+    image: "containous/whoami"
+    container_name: "simple-service2"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami2.rule=Host(`whoami-192.168.57.101.nip.io`)"
+      - "traefik.http.routers.whoami2.entrypoints=web"      
