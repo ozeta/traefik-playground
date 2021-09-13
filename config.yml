@@ -2,7 +2,7 @@ http:
   routers:
     external_whoami:
       entryPoints:
-        - "web"
+        - "whoami_8181"
       rule: "Host(`external-192.168.57.101.nip.io`)"
       # tls:
       #   certResolver: http

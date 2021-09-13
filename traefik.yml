@@ -8,3 +8,5 @@ providers:
 entryPoints:
   web:
     address: ":80"
+  whoami_8181:
+    address: ":8181"
