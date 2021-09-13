@@ -1,0 +1,15 @@
+http:
+  routers:
+    external_whoami:
+      entryPoints:
+        - "web"
+      rule: "Host(`external-192.168.57.101.nip.io`)"
+      # tls:
+      #   certResolver: http
+      service: external_whoami
+  services:
+    external_whoami:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.57.101:81/"
+        passHostHeader: true
